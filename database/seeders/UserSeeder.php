@@ -16,11 +16,6 @@ class UserSeeder extends Seeder
         User::create([
             'username' => 'admin',
             'password' => 'password'
-        ])->assignRole('admin');
-
-        User::create([
-            'username' => 'irian',
-            'password' => 'password'
-        ])->assignRole('user');
+        ]);
     }
 }

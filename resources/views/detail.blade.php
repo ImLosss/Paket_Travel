@@ -137,8 +137,7 @@
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg  shadow dark:bg-gray-700">
                 <div>
-                    <form action="{{ route('order.store') }}" method="POST">
-                        @csrf
+                    <form action="#" method="get">
                         <div
                             class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                             <div>

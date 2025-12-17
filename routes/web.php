@@ -13,23 +13,14 @@ use App\Http\Controllers\user\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 
-Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
 
 Route::get('/paket', [UserPaketController::class, 'index'])->name('paket.index');
 Route::get('/detail/{paket}', [UserPaketController::class, 'show'])->name('paket.show');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/order', [UserOrderController::class, 'index'])->name('order');
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-    Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
-    Route::post('/order', [UserOrderController::class, 'store'])->name('order.store');
-    Route::post('/order/{order}/proof', [UserOrderController::class, 'uploadProof'])->name('order.proof');
-});
-
 Route::group([
-    'middleware' => ['auth', 'role:admin'],
     'namespace'  => 'App\Http\Controllers\admin',
     'prefix'     => 'admin',
     'as'         => 'admin.'
