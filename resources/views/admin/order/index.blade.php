@@ -48,40 +48,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @forelse ($orders as $order)
-                                <tr>
-                                    <td class="text-sm">{{ $loop->iteration }}</td>
-                                    <td class="text-sm">{{ $order->user?->username ?? '-' }}</td>
-                                    <td class="text-sm">{{ $order->paket?->name ?? '-' }}</td>
-                                    <td class="text-sm">{{ $order->quantity }}</td>
-                                    <td class="text-sm">Rp {{ number_format($order->total_price) }}</td>
-                                    <td class="text-sm">{{ $order->status }}</td>
-                                    <td class="text-sm">{{ $order->is_paid ? 'Yes' : 'No' }}</td>
-                                    <td class="text-sm">
-                                        @if ($order->proof_of_payment)
-                                            <a href="{{ Storage::url($order->proof_of_payment) }}" target="_blank">
-                                                <img src="{{ Storage::url($order->proof_of_payment) }}" alt="proof" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px;">
-                                            </a>
-                                        @else
-                                            -
-                                        @endif
-                                    </td>
-                                    <td class="text-sm">{{ optional($order->created_at)->format('Y-m-d H:i') }}</td>
-                                    <td class="text-sm">
-                                        <a href="{{ route('admin.order.show', $order->id) }}" class="me-2" data-bs-toggle="tooltip" data-bs-original-title="View"><i class="fa-solid fa-eye text-secondary"></i></a>
-                                        <a href="{{ route('admin.order.edit', $order->id) }}" class="me-2" data-bs-toggle="tooltip" data-bs-original-title="Edit"><i class="fa-solid fa-pen-to-square text-secondary"></i></a>
-                                        <form id="form_{{ $order->id }}" action="{{ route('admin.order.destroy', $order->id) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="button" class="cursor-pointer fas fa-trash text-danger" onclick="modalHapus({{ $order->id }})" style="border: none; background: no-repeat;" data-bs-toggle="tooltip" data-bs-original-title="Delete Order"></button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="10" class="text-center text-sm">No order found.</td>
-                                </tr>
-                            @endforelse
+
                         </tbody>
                     </table>
                 </div>

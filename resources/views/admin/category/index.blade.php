@@ -25,7 +25,7 @@
                     <div class="col">
                         <div class="d-flex justify-content-end flex-wrap">
                             <div>
-                                <a class="btn bg-gradient-dark mb-0" href="{{ route('admin.category.create') }}"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Category</a>
+                                <a class="btn bg-gradient-dark mb-0" href="#"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Category</a>
                             </div>
                         </div>
                     </div>
@@ -43,24 +43,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @forelse ($categories as $category)
-                                <tr>
-                                    <td class="text-sm">{{ $loop->iteration }}</td>
-                                    <td class="text-sm">{{ $category->name }}</td>
-                                    <td class="text-sm">
-                                        <a href="{{ route('admin.category.edit', $category->id) }}"><i class="fa-solid fa-pen-to-square text-secondary"></i></a>
-                                        <form id="form_{{ $category->id }}" action="{{ route('admin.category.destroy', $category->id) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="button" class="cursor-pointer fas fa-trash text-danger" onclick="modalHapus({{ $category->id }})" style="border: none; background: no-repeat;" data-bs-toggle="tooltip" data-bs-original-title="Delete Category"></button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="3" class="text-center text-sm">No categories found.</td>
-                                </tr>
-                            @endforelse
+
                         </tbody>
                     </table>
                 </div>

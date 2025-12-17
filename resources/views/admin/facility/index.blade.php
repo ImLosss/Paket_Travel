@@ -26,7 +26,7 @@
                     <div class="col">
                         <div class="d-flex justify-content-end flex-wrap">
                             <div>
-                                <a class="btn bg-gradient-dark mb-0" href="{{ route('admin.facility.create') }}"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Fasilitas</a>
+                                <a class="btn bg-gradient-dark mb-0" href="#"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Fasilitas</a>
                             </div>
                         </div>
                     </div>
@@ -45,25 +45,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @forelse ($facilities as $facility)
-                                <tr>
-                                    <td class="text-sm">{{ $loop->iteration }}</td>
-                                    <td class="text-sm">{{ $facility->paket?->name ?? '-' }}</td>
-                                    <td class="text-sm">{{ $facility->name }}</td>
-                                    <td class="text-sm">
-                                        <a href="{{ route('admin.facility.edit', $facility->id) }}"><i class="fa-solid fa-pen-to-square text-secondary"></i></a>
-                                        <form id="form_{{ $facility->id }}" action="{{ route('admin.facility.destroy', $facility->id) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="button" class="cursor-pointer fas fa-trash text-danger" onclick="modalHapus({{ $facility->id }})" style="border: none; background: no-repeat;" data-bs-toggle="tooltip" data-bs-original-title="Delete Facility"></button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="4" class="text-center text-sm">No fasilitas found.</td>
-                                </tr>
-                            @endforelse
+
                         </tbody>
                     </table>
                 </div>

@@ -25,7 +25,7 @@
                     <div class="col">
                         <div class="d-flex justify-content-end flex-wrap">
                             <div>
-                                <a class="btn bg-gradient-dark mb-0" href="{{ route('admin.paket.create') }}"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Paket</a>
+                                <a class="btn bg-gradient-dark mb-0" href="#"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Paket</a>
                             </div>
                         </div>
                     </div>
@@ -53,40 +53,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @forelse ($pakets as $paket)
-                                <tr>
-                                    <td class="text-sm">{{ $loop->iteration }}</td>
-                                    <td class="text-sm">
-                                        @if ($paket->thumbnail)
-                                            <img src="{{ asset('storage/' . $paket->thumbnail) }}" alt="{{ $paket->name }}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px;">
-                                        @else
-                                            -
-                                        @endif
-                                    </td>
-                                    <td class="text-sm">{{ $paket->name }}</td>
-                                    <td class="text-sm">{{ $paket->category?->name ?? '-' }}</td>
-                                    <td class="text-sm">{{ $paket->location }}</td>
-                                    <td class="text-sm">{{ optional($paket->departure_date)->format('Y-m-d H:i') }}</td>
-                                    <td class="text-sm">{{ optional($paket->return_date)->format('Y-m-d H:i') }}</td>
-                                    <td class="text-sm">{{ $paket->duration }}</td>
-                                    <td class="text-sm">{{ $paket->price }}</td>
-                                    <td class="text-sm">{{ $paket->rating }}</td>
-                                    <td class="text-sm">{{ $paket->quota }}</td>
-                                    <td class="text-sm">{{ $paket->facilities?->count() ?? 0 }}</td>
-                                    <td class="text-sm">
-                                        <a href="{{ route('admin.paket.edit', $paket->id) }}"><i class="fa-solid fa-pen-to-square text-secondary"></i></a>
-                                        <form id="form_{{ $paket->id }}" action="{{ route('admin.paket.destroy', $paket->id) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="button" class="cursor-pointer fas fa-trash text-danger" onclick="modalHapus({{ $paket->id }})" style="border: none; background: no-repeat;" data-bs-toggle="tooltip" data-bs-original-title="Delete Paket"></button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="13" class="text-center text-sm">No paket found.</td>
-                                </tr>
-                            @endforelse
+
                         </tbody>
                     </table>
                 </div>
