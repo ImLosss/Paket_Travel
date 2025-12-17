@@ -103,7 +103,7 @@
                     @forelse ($pakets as $paket)
                         <a href="/detail/{{ $paket->id }}" class="">
                             <div class="  shadow-lg w-full h-90 bg-bottom bg-cover bg-no-repeat  rounded flex flex-col justify-end "
-                                style="background-image: url('{{ Storage::url($paket->thumbnail) }}');">
+                                style="background-image: url('https://placehold.co/600x400?text={{ $paket->getNama() }}');">
                                 <div class="h-40 rounded-t-xl rounded-b bg-white p-3 flex flex-col">
                                     <div class="flex items-center">
                                         <div class="flex text-yellow-400">
