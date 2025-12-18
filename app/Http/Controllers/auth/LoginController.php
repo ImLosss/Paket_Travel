@@ -15,6 +15,23 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        return redirect()->intended('/admin/order');
+        $credentials = $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            if(auth()->user()->hasRole('admin')){
+                return redirect()->intended('/admin/order');
+            }
+
+            return redirect()->intended('/order');
+        }
+
+        return back()->withErrors([
+            'username' => 'The provided credentials do not match our records.',
+        ])->onlyInput('username');
     }
 }
