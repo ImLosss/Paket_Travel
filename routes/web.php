@@ -21,6 +21,7 @@ Route::get('/paket', [UserPaketController::class, 'index'])->name('paket.index')
 Route::get('/detail/{paket}', [UserPaketController::class, 'show'])->name('paket.show');
 
 Route::group([
+    'middleware' => ['auth', 'role:admin'],
     'namespace'  => 'App\Http\Controllers\admin',
     'prefix'     => 'admin',
     'as'         => 'admin.'
