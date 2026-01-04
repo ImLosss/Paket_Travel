@@ -27,7 +27,7 @@ class LoginController extends Controller
                 return redirect()->intended('/admin/order');
             }
 
-            return redirect()->intended('/order');
+            return redirect()->intended('/');
         }
 
         return back()->withErrors([
